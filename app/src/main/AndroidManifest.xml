@@ -27,8 +27,18 @@
         <activity android:name=".LoginActivity" />
         <activity android:name=".GeneralActivity" />
         <activity android:name=".ConductorActivity" />
-        <activity android:name=".ClinicaActivity" />
         <activity android:name=".AgenteActivity" />
+        <activity android:name=".ListarClinicaActivity"/>
+        <activity android:name=".MascotaActivity"/>
+        <activity android:name=".CitasActivity"/>
+        <activity android:name=".PerfilActivity"/>
+        <activity android:name=".CitasAgenteActivity"/>
+        <activity android:name=".MascotaTratadaActivity"/>
+        <activity android:name=".AgregarVehiculoActivity"/>
+        <activity android:name=".AnadirVehiculoActivity"/>
+        <activity android:name=".EditarVehiculoActivity"/>
+        <activity android:name=".ListaVehiculosActivity"/>
+
 
     </application>
 

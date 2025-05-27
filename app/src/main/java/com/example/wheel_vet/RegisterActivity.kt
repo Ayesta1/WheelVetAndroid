@@ -92,8 +92,11 @@ class RegisterActivity : AppCompatActivity() {
             correousuario = etCorreo.text.toString(),
             direccionusuario = etDireccion.text.toString(),
             contrasena = etContrasena.text.toString(),
-            tipousuario = TipoUsuario.valueOf(spinnerTipoUsuario.selectedItem.toString().uppercase()),
-            ciudad = ciudades[spinnerCiudad.selectedItemPosition]
+            tipousuario = TipoUsuario.valueOf(
+                spinnerTipoUsuario.selectedItem.toString().uppercase()
+            ),
+            ciudad = ciudades[spinnerCiudad.selectedItemPosition],
+            idusuario = TODO()
         )
 
         api.registrarUsuario(usuario).enqueue(object : Callback<Void> {

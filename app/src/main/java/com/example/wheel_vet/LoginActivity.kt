@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.wheel_vet.model.LoginRequest
 import com.example.wheel_vet.model.Usuario
 import com.example.wheel_vet.model.TipoUsuario
+import com.example.wheel_vet.model.UsuarioSesion
 import com.example.wheel_vet.network.RetrofitClient
 import retrofit2.Call
 import retrofit2.Callback
@@ -71,20 +72,21 @@ class LoginActivity : AppCompatActivity() {
         when (usuario.tipousuario) {
             TipoUsuario.GENERAL -> {
                 Toast.makeText(this, "Bienvenido General: ${usuario.nombreusuario}", Toast.LENGTH_LONG).show()
+                UsuarioSesion.usuario = usuario
                 val intent = Intent(this, GeneralActivity::class.java)
                 startActivity(intent)
             }
             TipoUsuario.CONDUCTOR -> {
                 Toast.makeText(this, "Bienvenido Conductor: ${usuario.nombreusuario}", Toast.LENGTH_LONG).show()
-                startActivity(Intent(this, ConductorActivity::class.java))
-            }
-            TipoUsuario.CLINICA -> {
-                Toast.makeText(this, "Bienvenido Clínica: ${usuario.nombreusuario}", Toast.LENGTH_LONG).show()
-                startActivity(Intent(this, ClinicaActivity::class.java))
+                UsuarioSesion.usuario = usuario
+                val intent = Intent(this, ConductorActivity::class.java)
+                startActivity(intent)
             }
             TipoUsuario.AGENTE -> {
                 Toast.makeText(this, "Bienvenido Agente: ${usuario.nombreusuario}", Toast.LENGTH_LONG).show()
-                startActivity(Intent(this, AgenteActivity::class.java))
+                UsuarioSesion.usuario = usuario
+                val intent = Intent(this, AgenteActivity::class.java)
+                startActivity(intent)
             }
             else -> {
                 Toast.makeText(this, "Tipo de usuario desconocido", Toast.LENGTH_SHORT).show()
