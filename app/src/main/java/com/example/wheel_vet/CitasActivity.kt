@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.wheel_vet.model.*
+import com.example.wheel_vet.model.UsuarioSesion.usuario
 import com.example.wheel_vet.network.RetrofitClient
 import retrofit2.Call
 import retrofit2.Callback
@@ -93,7 +94,11 @@ class CitasActivity : AppCompatActivity() {
                     return@setOnClickListener
                 }
 
-                val usuario = UsuarioSesion.usuario ?: return@setOnClickListener
+                val agenteUsuario = agentes[spinnerAgente.selectedItemPosition].usuario
+                if (agenteUsuario?.idusuario == null) {
+                    Toast.makeText(this, "Agente inválido", Toast.LENGTH_SHORT).show()
+                    return@setOnClickListener
+                }
 
                 val nuevaCita = Cita(
                     idcita = null,
@@ -101,11 +106,12 @@ class CitasActivity : AppCompatActivity() {
                     mascota = mascotas[spinnerMascota.selectedItemPosition],
                     clinica = clinicas[spinnerClinica.selectedItemPosition],
                     conductor = conductores[spinnerConductor.selectedItemPosition].usuario,
-                    agente = agentes[spinnerAgente.selectedItemPosition].usuario,
+                    agente = Usuario(idusuario = agenteUsuario.idusuario),
                     descripcion = descripcion,
                     dia = fecha,
                     hora = hora,
                 )
+
 
                 apiService.crearCita(nuevaCita).enqueue(object : Callback<Cita> {
                     override fun onResponse(call: Call<Cita>, response: Response<Cita>) {

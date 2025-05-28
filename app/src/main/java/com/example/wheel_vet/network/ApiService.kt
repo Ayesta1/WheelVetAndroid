@@ -43,6 +43,8 @@ interface ApiService {
 
     //Endpoints Citas
 
+
+
     @GET("citas/usuario/{id}")
     fun getCitasPorUsuario(@Path("id") idusuario: Int): Call<List<Cita>>
 
@@ -53,7 +55,7 @@ interface ApiService {
     fun getCitasPorConductor(@Path("idconductor") idconductor: Int): Call<List<Cita>>
 
     @GET("citas/agente/{idagente}")
-    fun getCitasPorAgente(@Path("idagente") idagente: Int): Call<List<Cita>>
+    fun getCitasPorAgente(@Path("idagente") idAgente: Int): Call<List<Cita>>
 
     @POST("citas")
     fun crearCita(@Body cita: Cita): Call<Cita>

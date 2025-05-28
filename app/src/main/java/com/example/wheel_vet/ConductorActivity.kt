@@ -34,7 +34,7 @@ class ConductorActivity : AppCompatActivity() {
         }
 
         btnVerCitas.setOnClickListener {
-            val intent = Intent(this, CitasAgenteActivity::class.java)
+            val intent = Intent(this, CitasConductoresActivity::class.java)
             startActivity(intent)
         }
 

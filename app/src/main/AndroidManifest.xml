@@ -38,6 +38,7 @@
         <activity android:name=".AnadirVehiculoActivity"/>
         <activity android:name=".EditarVehiculoActivity"/>
         <activity android:name=".ListaVehiculosActivity"/>
+        <activity android:name=".CitasConductoresActivity"/>
 
 
     </application>
