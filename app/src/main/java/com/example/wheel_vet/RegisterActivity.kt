@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.wheel_vet.model.Ciudad
 import com.example.wheel_vet.model.TipoUsuario
 import com.example.wheel_vet.model.Usuario
+import com.example.wheel_vet.model.UsuarioRegistroRequest
 import retrofit2.*
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -86,7 +87,7 @@ class RegisterActivity : AppCompatActivity() {
             return
         }
 
-        val usuario = Usuario(
+        val nuevoUsuario = UsuarioRegistroRequest(
             nombreusuario = etNombre.text.toString(),
             telefonousuario = etTelefono.text.toString(),
             correousuario = etCorreo.text.toString(),
@@ -95,14 +96,14 @@ class RegisterActivity : AppCompatActivity() {
             tipousuario = TipoUsuario.valueOf(
                 spinnerTipoUsuario.selectedItem.toString().uppercase()
             ),
-            ciudad = ciudades[spinnerCiudad.selectedItemPosition],
-            idusuario = TODO()
+            ciudad = ciudades[spinnerCiudad.selectedItemPosition]
         )
 
-        api.registrarUsuario(usuario).enqueue(object : Callback<Void> {
+        api.registrarUsuario(nuevoUsuario).enqueue(object : Callback<Void> {
             override fun onResponse(call: Call<Void>, response: Response<Void>) {
                 if (response.isSuccessful) {
                     Toast.makeText(this@RegisterActivity, "Usuario registrado con éxito", Toast.LENGTH_SHORT).show()
+                    finish() // vuelve a la pantalla anterior (LoginActivity)
                 } else {
                     Toast.makeText(this@RegisterActivity, "Error al registrar usuario", Toast.LENGTH_SHORT).show()
                 }
@@ -113,4 +114,5 @@ class RegisterActivity : AppCompatActivity() {
             }
         })
     }
+
 }

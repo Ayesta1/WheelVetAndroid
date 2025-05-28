@@ -8,6 +8,7 @@ import com.example.wheel_vet.model.Conductor
 import com.example.wheel_vet.model.LoginRequest
 import com.example.wheel_vet.model.Mascota
 import com.example.wheel_vet.model.Usuario
+import com.example.wheel_vet.model.UsuarioRegistroRequest
 import com.example.wheel_vet.model.Vehiculo
 import retrofit2.Call
 import retrofit2.http.GET
@@ -28,7 +29,7 @@ interface ApiService {
     //Endpoints Usuarios
 
     @POST("usuarios")
-    fun registrarUsuario(@Body usuario: Usuario): Call<Void>
+    fun registrarUsuario(@Body usuario: UsuarioRegistroRequest): Call<Void>
 
     @POST("login")
     fun loginUsuario(@Body request: LoginRequest): Call<Usuario>
